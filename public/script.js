@@ -1,4 +1,3 @@
-
 console.log("hello world :o");
 
 var animate = window.requestAnimationFrame ||
@@ -12,9 +11,11 @@ var height = 600;
 canvas.width = width;
 canvas.height = height;
 var context = canvas.getContext('2d');
+var leftDiv = document.getElementById('left') // For putting the game above
 
 window.onload = function() {
-  document.body.appendChild(canvas);
+  leftDiv.appendChild(canvas);
+  getItems(); //Added by Ryan
   animate(step);
 };
 
@@ -211,3 +212,86 @@ Computer.prototype.update = function(ball) {
     this.paddle.x = 400 - this.paddle.width;
   }
 };
+
+//Ryans code here
+let user = "testuser"; //this will be the user's username. Replace dynamically with login
+
+const submitButton = document.getElementById("submit-score");
+const userText = document.getElementById("userInput");
+const scoresList = document.getElementById("scores");
+
+//This will be replaced by auto high scores
+submitButton.addEventListener("click", function(){
+  // stop our form submission from refreshing the page
+  event.preventDefault();
+  let newScore = userText.value;
+  addScore(user, newScore)
+});
+
+//Score MUST be taken in as string
+function addScore(theUsername, theScore){
+  fetch("/add", {
+    method: "POST",
+    body: JSON.stringify({ score: theScore, username: theUsername }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(res => clearList())
+    .then(res2 => getItems())
+}
+
+//Add score to list helper function:
+function appendNewScore(score, id) {
+  const newListItem = document.createElement("li");
+  newListItem.innerText = score;
+  scoresList.appendChild(newListItem);
+  newListItem.onclick = function() {
+    deleteItem(id);
+    newListItem.remove();
+  }
+}
+
+//Delete Function:
+function deleteItem(id) {
+  fetch("/delete", {
+    method: "POST",
+    body: JSON.stringify({ id }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(json => {});
+}
+
+//Get scores from server
+function getItems() {
+  fetch("/items", {
+    method: "POST",
+    body: JSON.stringify({ username: user }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json()) // parse the JSON from the server
+    .then(scores => {
+      // remove the loading text
+
+      // iterate through every dream and add it to our page
+      console.log("Items in database:");
+      console.log(scores);
+      //dreams.forEach(appendNewDream("test", "test"));
+      for (var i = 0; i < scores.length; i++) {
+        appendNewScore(scores[i].score, scores[i]._id);
+      }
+    });
+}
+
+//Clear the ul list
+function clearList(){
+  scoresList.innerHTML = "";
+}
+
+//RYANS CODE ENDS
