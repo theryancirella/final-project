@@ -5,9 +5,13 @@
 }
 
 body {
-  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  font-family: 'Commissioner', sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
+  background-color: black;
+  color: white;
 }
 
 h1 {
@@ -18,39 +22,80 @@ h1 {
 }
 
 form {
-  background-color: #eee;
+  background-color: black;
+  border: 2px solid silver;
+  border-radius: 30px;
   display: grid;
   grid-gap: 1em;
-  padding: 1em;
+  padding: 5em;
   max-width: 40ch;
+  box-shadow:
+        0 0 15px 2px #fff,
+        0 0 15px 5px #0ff,
+        inset 0px 0px 20px 0px #fff,
+        inset 0px 0px 20px 0px #0ff;
 }
 
 input {
-  border: 1px solid silver;
+  border: none;
+  background-color: black;
+  color: white;
   display: block;
   font-size: 16px;
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
+  box-shadow:
+        0 0 5px 2px #fff,
+        0 0 5px 5px #0ff,
+        inset 0px 0px 5px 0px #fff,
+        inset 0px 0px 5px 0px #0ff;
+}
+
+input::placeholder {
+  color: lightgray;  
 }
 
 form button {
-  background-color: #bbbbf2;
+  background-color: #0ff;
+  font-family: 'Commissioner', sans-serif;
   border: 2px solid currentColor;
-  border-radius: .25em;
+  border-radius: 5px;
   cursor: pointer;
   font-size: inherit;
   line-height: 1.4em;
   padding: 0.25em 1em;
   max-width: 20ch;
+  color: black;
+  opacity: 0.75;
 }
 
-form button:hover {
-  background-color: lavender;
+#signup{
+  margin: 20px;
+  font-family: 'Commissioner', sans-serif;
+  color: white;
+  background-color:black;
+  border:none;
+  padding: 10px;
+  outline: none;
 }
 
-footer {
-  margin-top: 3em;
-  padding-top: 1.5em;
-  border-top: 1px solid lightgrey;
+#signup:hover{
+  box-shadow:
+        0 0 5px 2px #fff,
+        0 0 5px 5px #0ff,
+        inset 0px 0px 5px 0px #fff,
+        inset 0px 0px 5px 0px #0ff;
+  cursor: pointer;
+}
+
+canvas{
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  box-shadow:
+        0 0 10px 2px #fff,
+        0 0 10px 5px #0ff,
+        inset 0px 0px 10px 0px #fff,
+        inset 0px 0px 10px 0px #0ff;
 }
