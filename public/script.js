@@ -28,6 +28,7 @@ var context = canvas.getContext('2d');
 var playerNumber = 0;
 
 var leftDiv = document.getElementById('left') // For putting the game above
+var startBtn = document.getElementById('start')
 
 
 
@@ -106,11 +107,12 @@ ws.addEventListener("open", () => {
 
 
 
-window.onload = function() {
+start.addEventListener("click", function() {
   leftDiv.appendChild(canvas);
   animate(step);
   getItems(playerNumber);
-};
+  start.remove();
+})
 
 var step = function() {
 
@@ -414,4 +416,4 @@ function clearList(){
   scoresList.innerHTML = "";
 }
 
-//RYANS CODE ENDS
+
