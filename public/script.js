@@ -32,7 +32,7 @@ var leftDiv = document.getElementById('left') // For putting the game above
 
 
 //***************************player select socket*******************
-const firstws = new WebSocket("ws://192.168.1.114:6969");
+const firstws = new WebSocket("ws://localhost:6969");
 
 firstws.addEventListener("open", () => {
   //console.log("connected");
@@ -69,7 +69,7 @@ function timeout() {
 timeout();
 
 //*******************Game socket************************
-const ws = new WebSocket("ws://192.168.1.114:8082");
+const ws = new WebSocket("ws://localhost:8082");
 
 
 ws.addEventListener("message", e=>{
