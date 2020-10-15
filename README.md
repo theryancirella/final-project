@@ -18,7 +18,7 @@ Think of 1,3, and 4 in particular in a similar vein to the design / tech achieve
 
 **Instructions to play the game**
 
-1. If you want to play on multiple computers you MUST change the ip in script.js (on lines 40 and 72) to
+1. If you want to play on multiple computers you MUST change "localhost:6969" and "localhost:8082" in script.js (on lines 35 and 72) to
 
 *your_ip_adress*:6969 or *your_ip_adress*:8082 for lines 40 and 72 respectively
 
@@ -49,4 +49,4 @@ Ryan: Responsible for the database communication
 
 Victoria: Responsible for the entirety of the front end
 
-6: https://www.youtube.com/watch?v=CBirwtKyYwc&ab_channel=Lewiscook
+6:
